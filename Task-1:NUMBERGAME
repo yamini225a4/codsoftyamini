@@ -1,0 +1,30 @@
+import java.util.Scanner;
+public class NumberGuessingGame {
+    public static void main(String[] args) {
+        int lower = 1;
+        int upper = 100;
+        int guessingNumber = (int) (Math.random() * (upper - lower+ 1)) + lower;
+        int maximumAttempts = 10;
+        int attempts = 0;
+        Scanner sc= new Scanner(System.in);
+        while (attempts < maximumAttempts) {
+            System.out.print("Guess the number between " + lower+ " and " + upper + ": ");
+            int Guess = sc.nextInt();
+            if (Guess == guessingNumber) {
+                System.out.println("Congratulations!" +guessingNumber + " in " + (attempts + 1) + " attempts.");
+                break;
+            } else if (Guess < guessingNumber) {
+                System.out.println("Too low! Try again.");
+            } else {
+                System.out.println("Too high! Try again.");
+            }
+            attempts++;
+        }
+
+        if (attempts == maximumAttempts) {
+            System.out.println("Sorry,the correct number is" + guessingNumber);
+        }
+
+        sc.close();
+    }
+}
